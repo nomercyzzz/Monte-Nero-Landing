@@ -1,5 +1,5 @@
 <script setup>
-import { onBeforeUnmount, onMounted, ref } from 'vue'
+import { onBeforeUnmount, onMounted } from 'vue'
 import AppHeader from './components/AppHeader.vue'
 import HeroSection from './components/HeroSection.vue'
 import SolutionsSection from './components/SolutionsSection.vue'
@@ -9,14 +9,42 @@ import FaqSection from './components/FaqSection.vue'
 import ContactSection from './components/ContactSection.vue'
 import AppFooter from './components/AppFooter.vue'
 
-const isPageVisible = ref(false)
-
 let observer
 
+const REVEAL_TRANSITION_MS = 450
+
 onMounted(() => {
-  requestAnimationFrame(() => {
-    isPageVisible.value = true
-  })
+  const scheduledReveal = new WeakSet()
+
+  const revealElement = (element) => {
+    if (!observer) {
+      return
+    }
+
+    if (scheduledReveal.has(element)) {
+      return
+    }
+
+    scheduledReveal.add(element)
+
+    requestAnimationFrame(() => {
+      requestAnimationFrame(() => {
+        if (!observer) {
+          return
+        }
+
+        element.classList.add('is-visible')
+        observer.unobserve(element)
+
+        const delayValue = Number(element.getAttribute('data-delay') || '0')
+        const safeDelay = Number.isFinite(delayValue) ? Math.max(0, delayValue) : 0
+
+        window.setTimeout(() => {
+          element.style.setProperty('--reveal-delay', '0ms')
+        }, safeDelay + REVEAL_TRANSITION_MS)
+      })
+    })
+  }
 
   observer = new IntersectionObserver(
     (entries) => {
@@ -25,8 +53,7 @@ onMounted(() => {
           return
         }
 
-        entry.target.classList.add('is-visible')
-        observer.unobserve(entry.target)
+        revealElement(entry.target)
       })
     },
     {
@@ -37,8 +64,6 @@ onMounted(() => {
 
   const revealElements = document.querySelectorAll('[data-reveal]')
   revealElements.forEach((element) => {
-    element.classList.add('reveal')
-
     const animation = element.getAttribute('data-anim')
     if (animation) {
       element.classList.add(`reveal-${animation}`)
@@ -56,6 +81,7 @@ onMounted(() => {
 onBeforeUnmount(() => {
   if (observer) {
     observer.disconnect()
+    observer = undefined
   }
 })
 </script>
@@ -64,7 +90,6 @@ onBeforeUnmount(() => {
   <div
     id="top"
     class="page-shell relative overflow-x-hidden bg-[var(--background)] text-[var(--text)]"
-    :class="isPageVisible ? 'is-ready' : ''"
   >
     <div
       aria-hidden="true"

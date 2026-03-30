@@ -1,5 +1,3 @@
-import placeholderPhoto from '../assets/placeholders/photo-placeholder.png'
-
 export const siteContent = {
   brand: {
     name: 'MONTE NERO',
@@ -9,7 +7,7 @@ export const siteContent = {
     { label: 'Решения', href: '#solutions' },
     { label: 'Услуги', href: '#services' },
     { label: 'Проекты', href: '#projects' },
-    { label: 'FAQ', href: '#faq' },
+    { label: 'Вопросы', href: '#faq' },
     { label: 'Контакты', href: '#contacts' }
   ],
   headerCta: {
@@ -30,7 +28,8 @@ export const siteContent = {
       href: '#solutions'
     },
     visual: {
-      image: placeholderPhoto,
+      image:
+        'https://images.pexels.com/photos/11274968/pexels-photo-11274968.jpeg?auto=compress&cs=tinysrgb&w=1600',
       alt: 'Фактура натурального камня в нейтральной интерьерной подаче'
     },
     trustPoints: [
@@ -170,7 +169,8 @@ export const siteContent = {
         text: 'Комплекс столешниц, подоконников и стеновых панелей с единой тональностью материала.',
         material: 'Кварцит',
         scope: 'Подбор, изготовление, монтаж',
-        image: placeholderPhoto
+        image:
+          'https://images.pexels.com/photos/8186505/pexels-photo-8186505.jpeg?auto=compress&cs=tinysrgb&w=1200'
       },
       {
         type: 'Загородный дом',
@@ -178,7 +178,8 @@ export const siteContent = {
         text: 'Изготовление ступеней, облицовки марша и акцентного камина под ритм архитектуры дома.',
         material: 'Мрамор',
         scope: 'Проектная проработка, производство, установка',
-        image: placeholderPhoto
+        image:
+          'https://images.pexels.com/photos/32150969/pexels-photo-32150969.jpeg?auto=compress&cs=tinysrgb&w=1200'
       },
       {
         type: 'Коммерческое пространство',
@@ -186,39 +187,46 @@ export const siteContent = {
         text: 'Каменные элементы для входной зоны и переговорных, рассчитанные на интенсивную эксплуатацию.',
         material: 'Гранит и оникс',
         scope: 'Консультация, подбор материала, монтаж',
-        image: placeholderPhoto
+        image:
+          'https://images.unsplash.com/photo-1758448721205-8465cebc26af?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMjA3fDB8MXxzZWFyY2h8NHx8c3RvbmUlMjByZWNlcHRpb24lMjBkZXNrfGVufDB8fHx8MTc3NDgxODEyOXww&ixlib=rb-4.1.0&q=80&w=1200'
       }
     ],
     gallery: [
       {
         title: 'Фрагмент кухонной столешницы',
         tag: 'Кварцит',
-        image: placeholderPhoto
+        image:
+          'https://images.pexels.com/photos/6510969/pexels-photo-6510969.jpeg?auto=compress&cs=tinysrgb&w=800'
       },
       {
         title: 'Каминная зона',
         tag: 'Мрамор',
-        image: placeholderPhoto
+        image:
+          'https://images.pexels.com/photos/7045773/pexels-photo-7045773.jpeg?auto=compress&cs=tinysrgb&w=800'
       },
       {
         title: 'Вертикальная панель',
         tag: 'Оникс',
-        image: placeholderPhoto
+        image:
+          'https://images.pexels.com/photos/6634136/pexels-photo-6634136.jpeg?auto=compress&cs=tinysrgb&w=800'
       },
       {
         title: 'Подоконный блок',
         tag: 'Гранит',
-        image: placeholderPhoto
+        image:
+          'https://images.pexels.com/photos/11255408/pexels-photo-11255408.jpeg?auto=compress&cs=tinysrgb&w=800'
       },
       {
         title: 'Лестничный узел',
         tag: 'Мрамор',
-        image: placeholderPhoto
+        image:
+          'https://images.pexels.com/photos/5058839/pexels-photo-5058839.jpeg?auto=compress&cs=tinysrgb&w=800'
       },
       {
         title: 'Стойка ресепшн',
         tag: 'Кварцит',
-        image: placeholderPhoto
+        image:
+          'https://images.pexels.com/photos/5371683/pexels-photo-5371683.jpeg?auto=compress&cs=tinysrgb&w=800'
       }
     ]
   },

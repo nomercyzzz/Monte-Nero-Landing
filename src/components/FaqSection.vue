@@ -34,21 +34,16 @@
             </span>
             <span
               class="inline-flex h-8 w-8 items-center justify-center rounded-full border border-[var(--border)] bg-white text-[var(--text-muted)] transition-transform duration-[400ms] ease-in-out"
-              :class="activeIndex === index ? 'rotate-0' : '-rotate-90'"
+              :class="isOpen(index) ? 'rotate-0' : '-rotate-90'"
             >
-              <ChevronDownIcon v-if="activeIndex === index" class="h-4 w-4" />
+              <ChevronDownIcon v-if="isOpen(index)" class="h-4 w-4" />
               <span v-else class="text-lg font-semibold leading-none">&gt;</span>
             </span>
           </button>
 
           <div
             class="grid overflow-hidden transition-all duration-[400ms] ease-in-out"
-            :class="
-              activeIndex === index
-                ? 'grid-rows-[1fr] pt-4 opacity-100'
-                : 'grid-rows-[0fr] opacity-0'
-            "
-          >
+            :class=" isOpen(index)? 'grid-rows-[1fr] pt-4 opacity-100': 'grid-rows-[0fr] opacity-0'">
             <div class="min-h-0">
               <p class="text-sm leading-relaxed text-[var(--text-muted)]">
                 {{ item.answer }}
@@ -66,10 +61,18 @@ import { ref } from 'vue'
 import { ChevronDownIcon } from '@heroicons/vue/24/outline'
 import siteContent from '../content/siteContent'
 
-const activeIndex = ref(0)
+const openItems = ref(new Set([0]))
+
+const isOpen = (index) => openItems.value.has(index)
 
 const toggleItem = (index) => {
-  activeIndex.value = activeIndex.value === index ? -1 : index
+  const next = new Set(openItems.value)
+  if (next.has(index)) {
+    next.delete(index)
+  } else {
+    next.add(index)
+  }
+  openItems.value = next
 }
 </script>
 

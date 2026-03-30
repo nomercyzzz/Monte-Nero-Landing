@@ -72,7 +72,7 @@
               :key="advantage"
               class="flex items-start gap-3 rounded-xl border border-[var(--border)] bg-[var(--surface-soft)] px-4 py-3 text-sm text-[var(--text)]"
             >
-              <span class="mt-[5px] inline-block h-1.5 w-1.5 rounded-full bg-[var(--accent)]" />
+              <span class="mt-[8px] inline-block h-1.5 w-1.5 rounded-full bg-[var(--accent)]" />
               <span class="leading-relaxed">{{ advantage }}</span>
             </li>
           </ul>
